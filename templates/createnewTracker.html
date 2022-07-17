@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            toggleFields();
+            $("#type").change(function () {
+                toggleFields();
+            });
+
+        });
+        function toggleFields() {
+            if ($("#type").val() === "Multiple")
+                $("#setting").show();
+            else
+                $("#setting").hide();
+        }
+        function myFunction() {
+            document.getElementById("myForm").submit();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>hi, {{ username }}</h1>
+    <h1>Add a tracker</h1>
+    <span style="width:250px; float: right;"> <a href="/logout">logout</a></span>
+    <form action=" /trackertype/create" method="POST" name="myForm">
+        <div>
+            <label for="name">Name :</label>
+            <input type="text" name="name" />
+        </div>
+        <br>
+        <div>
+            <label for="description">Description</label>
+            <input type="text" name="description" />
+        </div>
+        <br>
+        <div>
+            <label for="type">Tracker Type</label>
+            <select name="type" id="type">
+                <option value="Nm">type</option>
+                <option value="Num">Numerical Type</option>
+                <option value="Multiple">Multiple Choice Type</option>
+            </select>
+        </div>
+        <div id="setting">
+            <label for="nae">Settings :</label>
+            <input type="text" name="setting">
+        </div>
+        <input type="submit" onclick="myFunction()" value="Submit">
+    </form>
+</body>
+
+</html>

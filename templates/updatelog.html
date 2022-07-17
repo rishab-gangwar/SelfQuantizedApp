@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>window.addEventListener('load', () => {
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('time').value = now.toISOString().slice(0, -1);
+        });</script> -->
+</head>
+
+<body>
+    <h1>hi, {{ username }}</h1>
+    <div class="container night-fade-gradient" style="background: linear-gradient(#15caa6, #ffffff);">
+        <div class="row">
+            <div class="col-12">
+                <h1>
+                    <p>Update log @ {{oldwhen}}</p>
+                </h1>
+            </div>
+        </div>
+        <div class="align-middle row pb-5">
+            <div class="col-2 pb-5"></div>
+            <div class="col-8 rounded pb-5" style="background-color:#e5e5e5;">
+                <form action=" /trackertype/{{name}}/create" method="POST">
+                    <h2>Tracker {{name}}</h2>
+                    <div class="form-group ">
+                        <label for="time">Time of logging</label>
+                        <input type="datetime-local" class="form-control" id="time" name="when" value="{{oldwhen}}">
+                    </div>
+                    {% if multiple %}
+                    <div class="align-middle form-group" id="range">
+                        <label for="value">Value</label>
+
+                        <select name="value" id="type">
+                            {%for value in settings %}
+                            <option value="{{value}}">{{value}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    {% if not multiple %}
+                    <div class="form-group" id="range">
+                        <label for="value">Value</label>
+                        <input type="range" class="form-control" id="value" name="value" value="{{oldvalue}}">
+                    </div>
+                    {% endif %}
+
+                    <div class="form-grouppb-5" id="notes">
+                        <label for="notes">Notes</label>
+                        <input type="text" class="form-control" id="notes" name="notes">
+                    </div>
+                    <div class="align-middle pt-3">
+                        <button type="submit" class="btn btn-success btn-lg">Log It</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>
